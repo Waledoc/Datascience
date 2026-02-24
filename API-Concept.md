@@ -1,4 +1,4 @@
-# API Concept – Data Acquisition Strategy
+# API Concept – Data Acquisition Strategy for Topic 1
 
 This document defines the API and data-source strategy for each research topic.  
 It specifies data providers, variable scope, spatial/temporal resolution, and integration logic.
@@ -103,6 +103,16 @@ Deutscher Wetterdienst (DWD Open Data)
 Weather data will be matched to accident data by:
 
 1. Geographic mapping (district centroid coordinates → nearest weather grid)
+### Spatial Matching Strategy (Two-Level Plan)
+
+**Plan A (preferred):**  
+If accident data is available at point-level or district-level, weather is matched via coordinates  
+(e.g., accident coordinates or district centroid → nearest weather grid / station).
+
+**Plan B (fallback):**  
+If accident data is only available at state level, weather variables are aggregated to state level  
+(e.g., population-weighted mean across major cities/stations per state).
+
 2. Temporal alignment (hourly or daily aggregation)
 3. Lag construction (0–3 hour windows after weather changes)
 
