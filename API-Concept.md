@@ -103,6 +103,7 @@ Deutscher Wetterdienst (DWD Open Data)
 Weather data will be matched to accident data by:
 
 1. Geographic mapping (district centroid coordinates → nearest weather grid)
+
 **Plan A (preferred):**  
 If accident data is available at point-level or district-level, weather is matched via coordinates  
 (e.g., accident coordinates or district centroid → nearest weather grid / station).
