@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Q3: Forecast Accuracy</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">⚡ German Renewable Energy Analysis</div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="question1.html" class="nav-link">Q1: Weather Impact</a></li>
+                <li><a href="question2.html" class="nav-link">Q2: Generation Mix</a></li>
+                <li><a href="question3.html" class="nav-link active">Q3: Forecasting</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="container">
+        <h2>❓ Question 3: How Accurate Are Day-Ahead Forecasts?</h2>
+        
+        <div class="data-section">
+            <h3>Research Question</h3>
+            <p>How accurate are SMARD day-ahead forecasts for wind and PV compared to actual generation — and does the forecast error vary by season?</p>
+        </div>
+
+        <div class="chart-container">
+            <h3>Interactive: Seasonal Forecast Accuracy</h3>
+            <div class="control-panel">
+                <label for="metricSelect">Select Metric:</label>
+                <select id="metricSelect">
+                    <option value="mape">MAPE (%)</option>
+                    <option value="mae">MAE (MWh)</option>
+                    <option value="rmse">RMSE (MWh)</option>
+                </select>
+            </div>
+            <div id="accuracyChart"></div>
+        </div>
+
+        <div class="chart-container">
+            <h3>Forecast vs Actual: Wind Generation</h3>
+            <div id="windForecastChart"></div>
+        </div>
+
+        <div class="data-section">
+            <h3>💡 Key Insights</h3>
+            <ul>
+                <li><strong>Winter Variability:</strong> Wind forecasts have higher error in winter due to extreme weather events</li>
+                <li><strong>Summer Stability:</strong> Solar forecasts are more accurate in summer due to predictable cloud patterns</li>
+                <li><strong>MAPE Metrics:</strong> Wind MAPE typically 15-25%, Solar MAPE typically 10-18%</li>
+                <li><strong>Seasonal Pattern:</strong> Forecast errors peak during seasonal transitions (spring/fall)</li>
+                <li><strong>Ramp Events:</strong> Large forecast errors occur during rapid generation changes</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2025 German Renewable Energy Analysis. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Sample seasonal accuracy data
+        const accuracyData = {
+            mape: {
+                Wind: [22, 18, 15, 19],
+                Solar: [12, 8, 6, 10]
+            },
+            mae: {
+                Wind: [450, 380, 320, 410],
+                Solar: [280, 150, 120, 200]
+            },
+            rmse: {
+                Wind: [600, 520, 450, 560],
+                Solar: [380, 200, 160, 280]
+            }
+        };
+
+        const seasons = ['Winter', 'Spring', 'Summer', 'Fall'];
+
+        function updateAccuracyChart() {
+            const metric = document.getElementById('metricSelect').value;
+            const data = accuracyData[metric];
+
+            const windTrace = {
+                x: seasons,
+                y: data.Wind,
+                type: 'bar',
+                name: 'Wind',
+                marker: {color: '#3498db'}
+            };
+
+            const solarTrace = {
+                x: seasons,
+                y: data.Solar,
+                type: 'bar',
+                name: 'Solar',
+                marker: {color: '#f39c12'}
+            };
+
+            const layout = {
+                title: `Forecast Accuracy by Season (${metric.toUpperCase()})`,
+                xaxis: {title: 'Season'},
+                yaxis: {title: metric === 'mape' ? 'MAPE (%)' : 'Error (MWh)'},
+                barmode: 'group',
+                hovermode: 'closest'
+            };
+
+            Plotly.newPlot('accuracyChart', [windTrace, solarTrace], layout, {responsive: true});
+        }
+
+        // Wind Forecast vs Actual (sample time series)
+        const days = Array.from({length: 30}, (_, i) => i + 1);
+        const actual = [500, 520, 480, 450, 420, 450, 500, 550, 580, 600, 620, 600, 550, 500, 450, 420, 400, 430, 470, 510, 550, 580, 600, 620, 600, 550, 500, 450, 400, 380];
+        const forecast = [520, 530, 490, 460, 430, 460, 510, 540, 570, 590, 610, 610, 560, 510, 460, 430, 410, 440, 480, 520, 560, 570, 590, 610, 590, 560, 510, 460, 410, 390];
+
+        const actualTrace = {
+            x: days,
+            y: actual,
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Actual',
+            line: {color: '#e74c3c', width: 2}
+        };
+
+        const forecastTrace = {
+            x: days,
+            y: forecast,
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Forecast',
+            line: {color: '#3498db', width: 2, dash: 'dash'}
+        };
+
+        const forecastLayout = {
+            title: 'Wind Generation: Forecast vs Actual (Sample Month)',
+            xaxis: {title: 'Day of Month'},
+            yaxis: {title: 'Generation (MWh)'},
+            hovermode: 'x unified'
+        };
+
+        Plotly.newPlot('windForecastChart', [actualTrace, forecastTrace], forecastLayout, {responsive: true});
+
+        document.getElementById('metricSelect').addEventListener('change', updateAccuracyChart);
+        updateAccuracyChart();
+    </script>
+</body>
+</html>

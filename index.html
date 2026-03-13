@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>German Renewable Energy Analysis</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">⚡ German Renewable Energy Analysis</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="pages/question1.html" class="nav-link">Q1: Weather Impact</a></li>
+                <li><a href="pages/question2.html" class="nav-link">Q2: Generation Mix</a></li>
+                <li><a href="pages/question3.html" class="nav-link">Q3: Forecasting</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>German Renewable Energy Analysis 2022-2025</h1>
+            <p>Exploring the relationship between weather conditions and electricity generation from wind and solar sources</p>
+        </div>
+    </section>
+
+    <!-- Data Description -->
+    <section class="container">
+        <h2>📊 Project Overview</h2>
+        
+        <div class="data-section">
+            <h3>Research Questions</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>❓ Question 1</h4>
+                    <p><strong>Weather Impact on Renewables</strong></p>
+                    <p>How strongly do weather conditions (especially wind and sunshine) explain daily electricity generation from wind (onshore/offshore) and PV in Germany?</p>
+                </div>
+                <div class="card">
+                    <h4>❓ Question 2</h4>
+                    <p><strong>Generation Mix Shifts</strong></p>
+                    <p>How does Germany's generation mix shift on days with high renewable output — and which conventional sources are reduced the most?</p>
+                </div>
+                <div class="card">
+                    <h4>❓ Question 3</h4>
+                    <p><strong>Forecast Accuracy</strong></p>
+                    <p>How accurate are SMARD day-ahead forecasts for wind and PV compared to actual generation — and does error vary by season?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="data-section">
+            <h3>📈 Data Sources</h3>
+            <ul class="source-list">
+                <li>
+                    <strong>SMARD API</strong>: German electricity market data (2022-2025)
+                    <br><a href="https://www.smard.de/" target="_blank">→ https://www.smard.de/</a>
+                </li>
+                <li>
+                    <strong>Open-Meteo API</strong>: Historical weather data for major German cities
+                    <br><a href="https://open-meteo.com/" target="_blank">→ https://open-meteo.com/</a>
+                </li>
+                <li>
+                    <strong>Time Range</strong>: January 1, 2022 - December 31, 2025
+                    <br><strong>Regions Covered</strong>: 50Hertz, Amprion, TenneT, TransnetBW (TSO control areas)
+                </li>
+            </ul>
+        </div>
+
+        <div class="data-section">
+            <h3>🔬 Methodology</h3>
+            <ul>
+                <li>Data aggregated from SMARD electricity market API and Open-Meteo weather API</li>
+                <li>R² analysis to measure weather's explanatory power</li>
+                <li>Generation mix comparison on high vs low renewable days</li>
+                <li>Seasonal forecast accuracy evaluation (MAE, RMSE, MAPE)</li>
+                <li>Regional TSO analysis across Germany</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container about-section">
+        <h2>ℹ️ About This Project</h2>
+        <p>This project analyzes the German electricity market and its relationship with weather conditions, focusing on renewable energy generation (wind and solar) from 2022 to 2025.</p>
+        
+        <div class="imprint">
+            <h3>🏫 Imprint</h3>
+            <p><strong>Project:</strong> Data Science Project</p>
+            <p><strong>University:</strong> [Your University Name]</p>
+            <p><strong>Author:</strong> [Your Name]</p>
+            <p><strong>Date:</strong> 2025</p>
+            <p><strong>GitHub:</strong> <a href="https://github.com/yourusername/your-repo" target="_blank">GitHub Repository</a></p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 German Renewable Energy Analysis. All rights reserved.</p>
+    </footer>
+</body>
+</html>
