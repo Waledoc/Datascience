@@ -6,143 +6,167 @@
   <title>Electricity Project Germany</title>
   <link rel="stylesheet" href="css/style.css" />
   <style>
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 32px;
-      align-items: center;
-    }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 32px;
+    align-items: center;
+  }
 
-    .hero-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+  }
 
-    .button-link {
-      display: inline-block;
-      background-color: #0f172a;
-      color: white;
-      text-decoration: none;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 600;
-    }
+  .button-link {
+    display: inline-block;
+    background-color: #0f172a;
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
 
-    .button-link.secondary {
-      background-color: white;
-      color: #0f172a;
-      border: 1px solid #cbd5e1;
-    }
+  .button-link.secondary {
+    background-color: white;
+    color: #0f172a;
+    border: 1px solid #cbd5e1;
+  }
 
-    .hero-image-card,
-    .highlight-card,
-    .rq-overview-card,
-    .api-card {
-      background-color: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    }
+  .hero-image-card,
+  .highlight-card,
+  .rq-overview-card,
+  .api-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 
-    .hero-image-card {
-      padding: 20px;
-      text-align: center;
-    }
+  .hero-image-card {
+    padding: 20px;
+    text-align: center;
+  }
 
-    .hero-image-card img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 10px;
-    }
+  .hero-image-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
 
-    .hero-image-card p {
-      margin-top: 12px;
-      font-size: 0.95rem;
-      color: #475569;
-    }
+  .hero-image-card p {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: #475569;
+  }
 
-    .section-title {
-      margin-bottom: 20px;
-    }
+  .section-title {
+    margin-bottom: 20px;
+  }
 
+  .highlights-grid,
+  .api-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .api-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .highlight-card,
+  .api-card,
+  .rq-overview-card {
+    padding: 22px;
+  }
+
+  .highlight-card,
+  .rq-overview-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .highlight-card h3,
+  .rq-overview-card h3 {
+    margin-bottom: 10px;
+  }
+
+  .highlight-card p,
+  .rq-overview-card p {
+    margin-bottom: 12px;
+  }
+
+  .rq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .rq-overview-card iframe,
+  .highlight-card iframe {
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    background: white;
+    margin: 12px 0 16px 0;
+    display: block;
+  }
+
+  .highlight-card iframe {
+    height: 520px;
+    min-height: 520px;
+  }
+
+  .rq-overview-card iframe {
+    height: 520px;
+    min-height: 520px;
+  }
+
+  .highlight-card .button-link,
+  .rq-overview-card .button-link {
+    margin-top: auto;
+    align-self: flex-start;
+  }
+
+  .mini-label {
+    display: inline-block;
+    background-color: #e2e8f0;
+    color: #0f172a;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+
+  .intro-note {
+    color: #475569;
+    margin-top: 16px;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .rq-grid,
     .highlights-grid,
     .api-grid {
-      display: grid;
-      gap: 20px;
-    }
-
-    .highlights-grid {
       grid-template-columns: 1fr;
     }
 
-    .api-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
-    .highlight-card,
-    .api-card,
-    .rq-overview-card {
-      padding: 22px;
-    }
-
-    .rq-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-    }
-
-    .rq-overview-card iframe,
-    .highlight-card iframe {
-      width: 100%;
-      border: none;
-      border-radius: 10px;
-      background: white;
-      margin: 12px 0 16px 0;
-    }
-
+    .highlight-card iframe,
     .rq-overview-card iframe {
-      height: 380px;
-    }
-
-    .highlight-card iframe {
       height: 420px;
-    }  
-
-    .highlight-card iframe {
-      width: 100%;
-      height: 420px;
-      border: none;
-      border-radius: 10px;
-      background: white;
-      margin: 12px 0 16px 0;
-    }    
-
-    .mini-label {
-      display: inline-block;
-      background-color: #e2e8f0;
-      color: #0f172a;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 4px 8px;
-      border-radius: 999px;
-      margin-bottom: 12px;
+      min-height: 420px;
     }
+  }
+</style>
 
-    .intro-note {
-      color: #475569;
-      margin-top: 16px;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .rq-grid,
-      .highlights-grid,
-      .api-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
   <header>
